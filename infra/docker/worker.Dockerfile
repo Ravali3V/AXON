@@ -1,6 +1,6 @@
 # AXON audit worker — Playwright + Python + Node sidecar for Puppeteer PDF.
 # Based on Microsoft's Playwright image which includes browsers + system deps.
-FROM mcr.microsoft.com/playwright/python:v1.46.0-jammy
+FROM mcr.microsoft.com/playwright/python:v1.50.0-noble
 
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
