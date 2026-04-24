@@ -1,7 +1,7 @@
 # AXON frontend — multi-stage build for Cloud Run.
 FROM node:20-alpine AS deps
 WORKDIR /app
-COPY pnpm-workspace.yaml package.json ./
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY shared/package.json ./shared/
 COPY frontend/package.json ./frontend/
 RUN corepack enable && pnpm install --frozen-lockfile
