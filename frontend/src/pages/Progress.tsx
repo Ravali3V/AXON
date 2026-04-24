@@ -69,7 +69,6 @@ export function Progress() {
   }, [events]);
 
   const currentStageIdx = STAGE_KEYS.findIndex((s) => s === status);
-  const activeStages = new Set(events.map((e) => e.stage));
 
   const asinCount = (() => {
     const match = events
