@@ -1,0 +1,24 @@
+{
+  "name": "axon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AXON — Amazon Excellence Operations Network. Monorepo root.",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "echo 'Run each service individually: pnpm --filter frontend dev, pnpm --filter backend start:dev, or see per-service README'",
+    "db:up": "docker compose -f infra/docker/docker-compose.dev.yml up -d postgres",
+    "db:down": "docker compose -f infra/docker/docker-compose.dev.yml down",
+    "db:logs": "docker compose -f infra/docker/docker-compose.dev.yml logs -f postgres",
+    "db:migrate": "cd backend && pnpm run migration:run",
+    "db:seed": "cd backend && pnpm run seed"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

@@ -1,0 +1,73 @@
+:root {
+  --color-bg:           #0F1117;
+  --color-surface:      #1A1D27;
+  --color-surface-2:    #23262F;
+  --color-border:       #2D3040;
+  --color-text:         #E8E6E3;
+  --color-text-muted:   #9B9A97;
+  --color-accent:       #C8A97E;
+  --color-accent-light: #E8D5B5;
+  --color-success:      #4CAF50;
+  --color-warning:      #FF9800;
+  --color-danger:       #EF5350;
+  --color-info:         #42A5F5;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.app-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-nav a:hover {
+  color: var(--color-accent);
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

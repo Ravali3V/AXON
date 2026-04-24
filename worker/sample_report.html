@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Brand Audit — Warmies</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #FAF7F0;
+    color: #1F2430;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============================================================
+     COVER
+  ============================================================ */
+  .cover {
+    page-break-after: always;
+    min-height: 11in;
+    background: #FAF7F0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top accent band */
+  .cover-accent-top {
+    height: 14pt;
+    background: linear-gradient(90deg, #C8A97E 0%, #D4B896 50%, #C8A97E 100%);
+  }
+
+  .cover-header {
+    padding: 24pt 44pt 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover-badge {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C8A97E;
+    border: 1pt solid #C8A97E;
+    padding: 5pt 14pt;
+    border-radius: 2pt;
+  }
+  .cover-prepared {
+    font-size: 8pt;
+    color: #8B8478;
+    letter-spacing: 0.06em;
+  }
+  .cover-prepared strong {
+    color: #1F2430;
+    font-weight: 700;
+  }
+
+  .cover-body {
+    padding: 40pt 44pt 0;
+    flex: 1;
+  }
+  .cover-brand-label {
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C8A97E;
+    margin-bottom: 14pt;
+  }
+  .cover-brand-name {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 56pt;
+    font-weight: 400;
+    color: #1F2430;
+    letter-spacing: -1pt;
+    line-height: 1.02;
+    margin-bottom: 12pt;
+  }
+  .cover-subtitle {
+    font-size: 11pt;
+    color: #5A5648;
+    line-height: 1.65;
+    max-width: 500pt;
+    margin-bottom: 22pt;
+  }
+
+  /* Brand image strip — prominent, horizontal */
+  .brand-images {
+    margin-bottom: 24pt;
+  }
+  .brand-images-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8B8478;
+    margin-bottom: 10pt;
+    padding-bottom: 6pt;
+    border-bottom: 1pt solid #E6DFCF;
+  }
+  .image-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10pt;
+  }
+  .image-tile {
+    background: #FFFFFF;
+    border: 1pt solid #E6DFCF;
+    border-radius: 6pt;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .image-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8pt;
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-bottom: 26pt;
+    border-top: 1pt solid #E6DFCF;
+    border-bottom: 1pt solid #E6DFCF;
+  }
+  .stat-pill {
+    padding: 14pt 12pt;
+    border-right: 1pt solid #E6DFCF;
+    text-align: center;
+  }
+  .stat-pill:last-child { border-right: none; }
+  .stat-pill-val {
+    font-family: "Georgia", serif;
+    font-size: 20pt;
+    font-weight: 400;
+    color: #1F2430;
+    line-height: 1;
+    margin-bottom: 4pt;
+  }
+  .stat-pill-val.accent { color: #C8A97E; }
+  .stat-pill-lbl {
+    font-size: 7pt;
+    color: #8B8478;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  /* Score + grade row */
+  .score-row {
+    display: flex;
+    gap: 22pt;
+    align-items: center;
+    padding: 20pt 22pt;
+    background: #FFFFFF;
+    border: 1pt solid #E6DFCF;
+    border-radius: 8pt;
+  }
+  .score-circle-wrap {
+    width: 120pt;
+    height: 120pt;
+    border-radius: 50%;
+    border: 5pt solid #D15A1C;
+    background: #FBE9DD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .score-circle-num {
+    font-family: "Georgia", serif;
+    font-size: 42pt;
+    font-weight: 400;
+    color: #1F2430;
+    line-height: 1;
+  }
+  .score-circle-denom {
+    font-size: 9pt;
+    color: #8B8478;
+    margin-top: 2pt;
+    letter-spacing: 0.04em;
+  }
+  .score-text {
+    flex: 1;
+  }
+  .grade-title {
+    font-family: "Georgia", serif;
+    font-size: 26pt;
+    font-weight: 400;
+    color: #D15A1C;
+    margin-bottom: 4pt;
+    letter-spacing: -0.5pt;
+  }
+  .grade-sub {
+    font-size: 10pt;
+    color: #5A5648;
+    line-height: 1.55;
+  }
+
+  .cover-footer {
+    margin-top: auto;
+    padding: 16pt 44pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1pt solid #E6DFCF;
+    background: #F4EFDF;
+  }
+  .cover-footer-brand {
+    font-size: 7.5pt;
+    color: #8B8478;
+    letter-spacing: 0.05em;
+  }
+  .cover-footer-page {
+    font-size: 7.5pt;
+    color: #A8A293;
+  }
+
+  /* ============================================================
+     INNER PAGE
+  ============================================================ */
+  .page {
+    page-break-before: always;
+    min-height: 11in;
+    background: #FAF7F0;
+    padding: 26pt 44pt 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 8pt;
+    border-bottom: 1pt solid #E6DFCF;
+    margin-bottom: 16pt;
+  }
+  .page-header-brand {
+    font-size: 9pt;
+    color: #5A5648;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .page-header-title {
+    font-size: 8pt;
+    color: #C8A97E;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .page-title {
+    font-family: "Georgia", serif;
+    font-size: 22pt;
+    font-weight: 400;
+    color: #1F2430;
+    margin-bottom: 3pt;
+    letter-spacing: -0.5pt;
+    line-height: 1.15;
+  }
+  .page-title-sub {
+    font-size: 9pt;
+    color: #8B8478;
+    margin-bottom: 16pt;
+    font-style: italic;
+  }
+
+  .section-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #C8A97E;
+    margin-bottom: 10pt;
+    padding-bottom: 5pt;
+    border-bottom: 1pt solid #E6DFCF;
+  }
+
+  /* Score breakdown table */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14pt;
+  }
+  .score-table th {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8B8478;
+    padding: 0 0 8pt 0;
+    text-align: left;
+    border-bottom: 1.5pt solid #C8A97E;
+  }
+  .score-table th:last-child { text-align: right; }
+  .score-table td {
+    padding: 10pt 0;
+    border-bottom: 1pt solid #E6DFCF;
+    vertical-align: middle;
+  }
+  .score-table tr:last-child td { border-bottom: none; }
+  .st-section-name {
+    font-size: 10pt;
+    font-weight: 600;
+    width: 32%;
+  }
+  .st-bar-cell {
+    width: 42%;
+    padding-right: 16pt;
+  }
+  .st-bar-bg {
+    background: #EBE4D1;
+    border-radius: 4pt;
+    height: 8pt;
+    overflow: hidden;
+  }
+  .st-bar-fill {
+    height: 8pt;
+    border-radius: 4pt;
+  }
+  .st-score {
+    font-size: 11pt;
+    font-weight: 700;
+    text-align: right;
+    font-family: "Georgia", serif;
+    white-space: nowrap;
+  }
+
+  /* Narrative */
+  .narrative-box {
+    background: #FFFFFF;
+    border-left: 3pt solid #C8A97E;
+    border-radius: 0 6pt 6pt 0;
+    padding: 11pt 16pt;
+    margin-bottom: 16pt;
+    font-size: 9.5pt;
+    color: #2D3142;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Top ASIN cards */
+  .asin-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10pt;
+    margin-bottom: 22pt;
+  }
+  .asin-card {
+    background: #FFFFFF;
+    border: 1pt solid #E6DFCF;
+    border-radius: 7pt;
+    overflow: hidden;
+  }
+  .asin-card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #FAF7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1pt solid #E6DFCF;
+  }
+  .asin-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8pt;
+  }
+  .asin-card-body { padding: 8pt 10pt; }
+  .asin-card-asin {
+    font-size: 7pt;
+    color: #A8A293;
+    font-family: monospace;
+    margin-bottom: 3pt;
+  }
+  .asin-card-title {
+    font-size: 8pt;
+    color: #2D3142;
+    line-height: 1.4;
+    margin-bottom: 6pt;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .asin-card-meta {
+    display: flex;
+    gap: 10pt;
+    font-size: 7.5pt;
+    color: #8B8478;
+  }
+  .asin-card-meta strong {
+    color: #1F2430;
+    font-weight: 700;
+  }
+
+  /* Findings columns */
+  .findings-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10pt;
+    margin-bottom: 10pt;
+  }
+  .findings-col-header {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding-bottom: 7pt;
+    border-bottom: 2pt solid;
+    text-align: center;
+  }
+  .findings-col-header.green  { color: #2A9D5C; border-color: #2A9D5C; }
+  .findings-col-header.orange { color: #D15A1C; border-color: #D15A1C; }
+  .findings-col-header.blue   { color: #2980B9; border-color: #2980B9; }
+
+  .findings-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8pt;
+    margin-bottom: 14pt;
+  }
+  .findings-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5pt;
+  }
+  .finding-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6pt;
+    font-size: 8pt;
+    color: #2D3142;
+    line-height: 1.45;
+    padding: 6pt 9pt;
+    background: #FFFFFF;
+    border: 1pt solid #E6DFCF;
+    border-radius: 5pt;
+  }
+  .finding-icon {
+    font-size: 10pt;
+    flex-shrink: 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .finding-icon.green  { color: #2A9D5C; }
+  .finding-icon.orange { color: #D15A1C; }
+  .finding-icon.blue   { color: #2980B9; }
+  .finding-text-bold { font-weight: 700; color: #1F2430; }
+
+  /* One Thing */
+  .one-thing-box {
+    background: #F8F1E0;
+    border: 1pt solid #C8A97E;
+    border-radius: 8pt;
+    padding: 14pt 20pt;
+    margin-bottom: 14pt;
+  }
+  .one-thing-label {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #C8A97E;
+    margin-bottom: 8pt;
+  }
+  .one-thing-text {
+    font-family: "Georgia", serif;
+    font-size: 12pt;
+    font-weight: 400;
+    color: #1F2430;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: #1F2430;
+    color: #FFFFFF;
+    border-radius: 8pt;
+    padding: 20pt 24pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+  .cta-title {
+    font-family: "Georgia", serif;
+    font-size: 13pt;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 5pt;
+  }
+  .cta-subtitle {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    max-width: 340pt;
+  }
+  .cta-btn {
+    background: #C8A97E;
+    color: #1F2430;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 11pt 22pt;
+    border-radius: 4pt;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 20pt;
+    letter-spacing: 0.04em;
+  }
+
+  /* Page footer */
+  .page-footer {
+    padding-top: 14pt;
+    margin-top: 18pt;
+    border-top: 1pt solid #E6DFCF;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.5pt;
+    color: #A8A293;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 — COVER -->
+<div class="cover">
+  <div class="cover-accent-top"></div>
+
+  <div class="cover-header">
+    <div class="cover-badge">Brand Audit Report</div>
+    <div class="cover-prepared">Prepared by <strong>Aitomic</strong></div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-brand-name">Warmies</div>
+
+    <div class="cover-subtitle">Warmies makes microwavable, lavender-scented plush toys that bring warmth, comfort and calm to children and adults. Handcrafted with gentle-touch fabrics and filled with natural French lavender and millet grain.</div>
+
+    <div class="brand-images">
+  <div class="brand-images-label">Featured Products</div>
+  <div class="image-strip"><div class="image-tile"><img src="https://m.media-amazon.com/images/I/71sAR-QidJL._AC_SL1500_.jpg" alt="" /></div><div class="image-tile"><img src="https://m.media-amazon.com/images/I/81K4mEM6xYL._AC_SL1500_.jpg" alt="" /></div><div class="image-tile"><img src="https://m.media-amazon.com/images/I/71iWvB7rS3L._AC_SL1500_.jpg" alt="" /></div><div class="image-tile"><img src="https://m.media-amazon.com/images/I/71tNpZPq3hL._AC_SL1500_.jpg" alt="" /></div></div>
+</div>
+
+    <div class="stats-strip">
+      <div class="stat-pill">
+        <div class="stat-pill-val accent">4</div>
+        <div class="stat-pill-lbl">ASINs</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-pill-val">2</div>
+        <div class="stat-pill-lbl">Categories</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-pill-val">4.7★</div>
+        <div class="stat-pill-lbl">Avg Rating</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-pill-val">36.8K</div>
+        <div class="stat-pill-lbl">Total Reviews</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-pill-val">100%</div>
+        <div class="stat-pill-lbl">Buy Box</div>
+      </div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-circle-wrap">
+        <div class="score-circle-num">72</div>
+        <div class="score-circle-denom">/ 100</div>
+      </div>
+      <div class="score-text">
+        <div class="grade-title">Growing</div>
+        <div class="grade-sub">
+          Strong foundations detected — build momentum
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-brand">Aitomic · April 23, 2026</div>
+    <div class="cover-footer-page">Confidential — Prepared exclusively for Warmies · Page 1 of 2</div>
+  </div>
+</div>
+
+<!-- PAGE 2 — SCORE + FINDINGS -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-brand">Warmies</div>
+    <div class="page-header-title">Score · Findings · Opportunities</div>
+  </div>
+
+  <div class="page-title">Score Breakdown</div>
+  <div class="page-title-sub">How Warmies performs across the five audit pillars</div>
+
+  <table class="score-table">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Performance</th>
+      <th style="text-align:right">Score</th>
+    </tr>
+  </thead>
+  <tbody><tr>
+  <td class="st-section-name" style="color:#D15A1C">Listing Quality</td>
+  <td class="st-bar-cell">
+    <div class="st-bar-bg">
+      <div class="st-bar-fill" style="width:82%;background:#D15A1C"></div>
+    </div>
+  </td>
+  <td class="st-score" style="color:#D15A1C">24<span style="color:#A8A293;font-size:8pt;font-weight:400">/30</span></td>
+</tr><tr>
+  <td class="st-section-name" style="color:#2980B9">Ratings &amp; Reviews</td>
+  <td class="st-bar-cell">
+    <div class="st-bar-bg">
+      <div class="st-bar-fill" style="width:85%;background:#2980B9"></div>
+    </div>
+  </td>
+  <td class="st-score" style="color:#2980B9">17<span style="color:#A8A293;font-size:8pt;font-weight:400">/20</span></td>
+</tr><tr>
+  <td class="st-section-name" style="color:#8E44AD">Brand Presence</td>
+  <td class="st-bar-cell">
+    <div class="st-bar-bg">
+      <div class="st-bar-fill" style="width:62%;background:#8E44AD"></div>
+    </div>
+  </td>
+  <td class="st-score" style="color:#8E44AD">12<span style="color:#A8A293;font-size:8pt;font-weight:400">/20</span></td>
+</tr><tr>
+  <td class="st-section-name" style="color:#2A9D5C">Buy Box Health</td>
+  <td class="st-bar-cell">
+    <div class="st-bar-bg">
+      <div class="st-bar-fill" style="width:87%;background:#2A9D5C"></div>
+    </div>
+  </td>
+  <td class="st-score" style="color:#2A9D5C">13<span style="color:#A8A293;font-size:8pt;font-weight:400">/15</span></td>
+</tr><tr>
+  <td class="st-section-name" style="color:#D4A017">Content Quality</td>
+  <td class="st-bar-cell">
+    <div class="st-bar-bg">
+      <div class="st-bar-fill" style="width:33%;background:#D4A017"></div>
+    </div>
+  </td>
+  <td class="st-score" style="color:#D4A017">5<span style="color:#A8A293;font-size:8pt;font-weight:400">/15</span></td>
+</tr></tbody>
+</table>
+
+  <div class="narrative-box">Warmies shows strong product-market fit with consistent 4.6-star ratings and healthy review velocity across a deep catalog. Primary gaps: Brand Store depth and video coverage.</div>
+
+  <div class="section-label">Detailed Findings &amp; Growth Opportunities</div>
+
+  <div class="findings-header">
+    <div class="findings-col-header green">✦ Strengths</div>
+    <div class="findings-col-header orange">⚑ Watch Closely</div>
+    <div class="findings-col-header blue">■ Opportunities</div>
+  </div>
+
+  <div class="findings-columns">
+  <div class="findings-col"><div class="finding-item"><span class="finding-icon green">✓</span><span><span class="finding-text-bold">Title Optimization:</span> 95% of ASINs well-formed</span></div><div class="finding-item"><span class="finding-icon green">✓</span><span><span class="finding-text-bold">Average Star Rating:</span> 4.6 across catalog</span></div><div class="finding-item"><span class="finding-icon green">✓</span><span><span class="finding-text-bold">Buy Box Ownership:</span> 98% brand/FBA controlled</span></div><div class="finding-item"><span class="finding-icon green">✓</span><span><span class="finding-text-bold">Price Consistency:</span> low variance</span></div></div>
+  <div class="findings-col"><div class="finding-item"><span class="finding-icon orange">!</span><span><span class="finding-text-bold">Video Coverage:</span> only 18% of ASINs have videos</span></div><div class="finding-item"><span class="finding-icon orange">!</span><span><span class="finding-text-bold">Brand Story:</span> not present on most PDPs</span></div><div class="finding-item"><span class="finding-icon orange">!</span><span><span class="finding-text-bold">Store Quality:</span> only 1 sub-page, no nav</span></div></div>
+  <div class="findings-col"><div class="finding-item"><span class="finding-icon blue">→</span><span>Add 30-60s demo video to top-3 ASINs — lifts conversion up to 80%</span></div><div class="finding-item"><span class="finding-icon blue">→</span><span>Enable From-the-Brand module on every listing (free with Registry)</span></div><div class="finding-item"><span class="finding-icon blue">→</span><span>Expand Brand Store with 3+ sub-pages and hero imagery</span></div></div>
+</div>
+
+  <div class="one-thing-box">
+  <div class="one-thing-label">The One Thing · Highest Impact Action</div>
+  <div class="one-thing-text">Add 30-60s demo video to top-3 ASINs — lifts conversion up to 80%</div>
+</div>
+
+  <div class="cta-box">
+    <div>
+      <div class="cta-title">Want the full picture?</div>
+      <div class="cta-subtitle">
+        This report covers publicly available data across your brand's Amazon presence.
+        Our Tier 2 audit maps SP-API metrics, keyword rank, competitor benchmarking,
+        and includes a dedicated account strategy session.
+      </div>
+    </div>
+    <div class="cta-btn">Let's walk you through this →</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Aitomic · Confidential — Prepared exclusively for Warmies</span>
+    <span>Page 2 of 2</span>
+  </div>
+</div>
+
+</body>
+</html>

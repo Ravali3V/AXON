@@ -1,0 +1,13 @@
+{
+  "name": "axon-pdf-sidecar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node sidecar that turns HTML on stdin into PDF on stdout via Puppeteer.",
+  "main": "render.js",
+  "scripts": {
+    "test": "echo 'no tests'"
+  },
+  "dependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}
