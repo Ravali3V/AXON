@@ -295,6 +295,10 @@ export class InitialSchema1713700000000 implements MigrationInterface {
 
     // -------- Default org --------
     // Seeded with a stable UUID so v1 (pre-auth) can attribute all audits here.
+    // Set app.current_org LOCAL so the INSERT passes the RLS WITH CHECK we just enabled.
+    await queryRunner.query(
+      `SELECT set_config('app.current_org', '00000000-0000-0000-0000-000000000001', true)`,
+    );
     await queryRunner.query(`
       INSERT INTO "organizations" ("id", "name", "plan")
       VALUES ('00000000-0000-0000-0000-000000000001', 'AXON Internal', 'internal')
